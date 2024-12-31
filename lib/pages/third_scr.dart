@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../page_layout.dart';
 import 'home_screen.dart';
@@ -12,7 +12,7 @@ class ThirdScr extends StatelessWidget {
       btnLabel: 'Back To Home Screen',
       onPressed: () => Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+        CupertinoPageRoute(builder: (context) => const HomeScreen()),
         (_) => false,
       ),
     );

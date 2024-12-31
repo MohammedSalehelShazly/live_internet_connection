@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../page_layout.dart';
 import 'second_scr.dart';
@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
       'Live Internet Connection',
       btnLabel: 'To Second Screen',
       onPressed: () => Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const SecondScr())),
+          .push(CupertinoPageRoute(builder: (context) => const SecondScr())),
     );
   }
 }

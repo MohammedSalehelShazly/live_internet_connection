@@ -14,26 +14,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      builder: (context, child) {
-        // we can use [Overlay] instead of Stack, If there are more complex children.
-        // Overlay(initialEntries: [
-        //   OverlayEntry(builder: (context) => child!),
-        //   OverlayEntry(builder: (context) => StreamBuilder ... ),
-        // ]);
-        return Stack(
-          children: [
-            if (child != null) child,
-            StreamBuilder<InternetConnectionStatus>(
-                stream: InternetConnectionChecker.instance.onStatusChange,
-                builder: (context, snapshot) {
-                  final isDisconnected =
-                      snapshot.data == InternetConnectionStatus.disconnected;
-                  if (!isDisconnected) return const SizedBox();
-                  return const NoInternetWidget();
-                }),
-          ],
-        );
-      },
+      // we can use [Overlay] instead of Stack, If there are more complex children.
+      // Overlay(initialEntries: [
+      //   OverlayEntry(builder: (context) => child!),
+      //   OverlayEntry(builder: (context) => StreamBuilder ... ),
+      // ]);
+      builder: (context, child) => Stack(
+        children: [
+          // child here represents the Route Widget: the current app screen content.
+          if (child != null) child,
+
+          StreamBuilder<InternetConnectionStatus>(
+              stream: InternetConnectionChecker.instance.onStatusChange,
+              builder: (context, snapshot) {
+                final isConnected =
+                    snapshot.data == InternetConnectionStatus.connected;
+                if (isConnected) return const SizedBox();
+                return const NoInternetWidget();
+              }),
+        ],
+      ),
       home: const HomeScreen(),
     );
   }

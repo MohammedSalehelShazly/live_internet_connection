@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../page_layout.dart';
 import 'third_scr.dart';
@@ -11,7 +11,7 @@ class SecondScr extends StatelessWidget {
       '2nd Page',
       btnLabel: 'To Third Screen',
       onPressed: () => Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const ThirdScr())),
+          .push(CupertinoPageRoute(builder: (context) => const ThirdScr())),
     );
   }
 }
